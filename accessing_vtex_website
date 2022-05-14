@@ -1,0 +1,1018 @@
+import pyautogui # Automation mouse and keyboard
+import pyperclip # Especial chars on string
+import time # Controling time
+
+#Variabels
+email = "putting email to access vtex website here"
+
+
+vtex = int(input(f"Qual site você vai acessar?\n"
+                 f"(1) https://xxxxxxx.myvtex.com/admin\n"
+                 f"(2) https://xxxxxxxxx.myvtex.com/admin\n"
+                 f"(3) https://xxxxxx.myvtex.com/admin\n"
+                 f"(4) https://xxxxxxx.myvtex.com/admin\n\n "
+                 "R:"))
+
+while vtex > 4 or vtex < 1:
+    print("Digite as opções informadas!")
+    vtex = int(input(f"Você digitou os dados incorretamente. Digite de novo:"))
+else:
+    pass
+
+tempo_extracao = int(input(f"Informe o período de extração:\n"
+                 f"(1) Ontem\n"
+                 f"(2) Último 7 dias\n"
+                 f"(3) Última Semana\n"
+                 f"(4) Últimos 28 dias\n"
+                 f"(5) Mês passado\n\n"
+                 "R:"))
+
+while tempo_extracao > 5 or tempo_extracao < 1:
+    print("Digite as opções informadas!")
+    tempo_extracao = int(input(f"Você digitou o tempo de extração incorretamente. Digite de novo:"))
+else:
+    pass
+
+
+agrupar = int(input(f"Como o dado será agrupado:\n"
+                 f"(01) Categoria\n"
+                 f"(02) Marca\n"
+                 f"(03) Nome do Marketplace Out\n"
+                 f"(04) Canal de Entrega\n"
+                 f"(05) Método de Envio\n"
+                 f"(06) Cidade de Destino\n"
+                 f"(07) Estado de Destino\n"
+                 f"(08) Nome do Seller\n"
+                 f"(09) Meio de Pagamento\n"   
+                 f"(10) Nome do Produto/SKU\n"
+                 f"(11) 1P/3P\n"
+                 f"(12) Campanha\n"
+                 f"(13) Cupom\n"
+                 "R:"))
+
+while agrupar > 13 or agrupar < 1:
+    print("Digite as opções informadas!")
+    agrupar = int(input(f"Você digitou o tipo de agrupamento de dados incorretamente. Digite de novo:"))
+else:
+    pass
+
+'''
+visualizacao_dado = int(input(f"Escolha a forma de visualização do dado:"
+                         f"(01) Porcentagem"
+                         f"(02) Absoluta"
+                         f"(03) Representativa"))
+
+
+while visualizacao_dado > 3 or visualizacao_dado < 1:
+    print("Digite as opções informadas!")
+    visualizacao_dado = int(input(f"Você digitou o tipo de visualização de dados incorretamente. Digite de novo:"))
+else:
+    pass
+'''
+
+
+# Extração xxxxx
+
+if vtex == 1:
+
+    site = "https://xxxxxxxxx.myvtex.com/admin/sales-performance/"
+
+    # User mustn't use different words
+    log = str
+    log = str(input("Você está logado no site da VTEX?(S/N)"))
+    while log != "S" and log != "s" and log != "N" and log != "n":
+        print(r"Digite as opções informadas!")
+        log = str(input(r"Você está logado no site da VTEX?(S/N)"))
+    else:
+        pass
+
+    # Conditional about login: Is user are logged on VTEX?
+    if log == "N" or log == "n":
+
+        # Timing between pyautogui codes
+        pyautogui.PAUSE = 2
+
+        # Initiate browser
+        pyautogui.press("win")
+        time.sleep(1)
+        pyautogui.write("Chrome")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+
+        # Searching VTEX's website
+        pyautogui.click(x=158, y=53)
+        pyautogui.press("delete")
+        pyperclip.copy(site)
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+
+        time.sleep(6)
+
+        # Input E-mail on login and call code
+        pyautogui.press("F11")
+        pyautogui.click(x=531, y=350, clicks=2)
+        pyautogui.write(email)
+        pyautogui.press("Enter")
+        time.sleep(3)
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+
+        # login outlook no office 365
+        '''pyautogui.press("F11")
+        pyautogui.hotkey("CTRL","t")
+        pyperclip.copy("https://outlook.office.com/mail/")
+        pyautogui.hotkey("CTRL","v")
+        pyautogui.press("Enter")
+    
+        # Searching VTEX's code access
+        pyautogui.press("F11")
+        '''
+
+        # login outlook api
+        pyautogui.press("win")
+        pyautogui.write("Outlook")
+        pyautogui.press("Enter")
+
+        time.sleep(2)
+
+        # Looking for access code
+        pyautogui.hotkey("CTRL", "SHIFT", "i")
+        pyautogui.press("F3")
+        time.sleep(4)
+        pyperclip.copy("Seu código de acesso é")
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+        pyautogui.press("Enter")
+
+        for x in range(4):
+            pyautogui.press("TAB")
+
+        pyautogui.PAUSE = 0.3
+
+        for x in range(23):
+            pyautogui.press("RIGHT")
+
+        for x in range(6):
+            pyautogui.hotkey("SHIFT", "RIGHT")
+
+        pyautogui.hotkey("CTRL", "c")
+        pyautogui.hotkey("ALT", "F4")
+        pyautogui.hotkey("ALT", "TAB")
+        pyautogui.click(x=527, y=418, clicks=2)
+        pyautogui.hotkey("CTRL","v")
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+
+        time.sleep(6)
+    elif log == "S" or log == "s":
+        pyautogui.pause = 5
+
+        # Initiate browser and surf on website
+        pyautogui.press("win")
+        time.sleep(1)
+        pyautogui.write("Chrome")
+        pyautogui.press("Enter")
+
+        time.sleep(6)
+
+        pyautogui.click(x=158, y=53)
+        pyautogui.press("delete")
+        pyperclip.copy(site)
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+
+        time.sleep(6)
+        pyautogui.press("F11")
+
+    else:
+        print("Verifique a informação digitada!")
+
+    time.sleep(5)
+    pyautogui.pause = 2
+
+    if tempo_extracao == 1:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 2:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 3:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 4:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    else:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(5)
+
+    for x in range(8):
+        pyautogui.press("TAB")
+        time.sleep(0.5)
+
+    # grouping data
+    if agrupar == 1:
+        for x in range(9):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 2:
+        for x in range(8):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 3:
+        for x in range(7):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 4:
+        for x in range(6):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 5:
+        for x in range(5):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 6:
+        for x in range(4):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 7:
+        for x in range(3):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 8:
+        for x in range(2):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 9:
+            pyautogui.press("UP")
+            time.sleep(0.5)
+            pyautogui.press("Enter")
+    elif agrupar == 10:
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    elif agrupar == 11:
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    elif agrupar == 12:
+        pyautogui.press("DOWN")
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    else:
+        print("Agrupamento incorreto!")
+
+    '''
+    if visualizacao_dado == 1:
+        pyautogui.press("TAB")
+    elif visualizacao_dado == 2:
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+    elif visualizacao_dado == 3:
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+    else:
+        print("Digite a forma de visualização correta!")
+    '''
+
+    for x in range(4):
+        pyautogui.press("TAB")
+
+    pyautogui.press("Enter")
+
+# Extração xxxxx
+elif vtex == 2:
+    site = "https://xxxxxxxxxx.myvtex.com/admin/sales-performance/"
+
+    # User mustn't use different words
+    log = str
+    log = str(input("Você está logado no site da VTEX?(S/N)"))
+    while log != "S" and log != "s" and log != "N" and log != "n":
+        print(r"Digite as opções informadas!")
+        log = str(input(r"Você está logado no site da VTEX?(S/N)"))
+    else:
+        pass
+
+    # Conditional about login: Is user are logged on VTEX?
+    if log == "N" or log == "n":
+
+         # Timing between pyautogui codes
+        pyautogui.PAUSE = 2
+
+        # Initiate browser
+        pyautogui.press("win")
+        time.sleep(1)
+        pyautogui.write("Chrome")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+
+        # Searching VTEX's website
+        pyautogui.click(x=158, y=53)
+        pyautogui.press("delete")
+        pyperclip.copy(site)
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+
+        # Input E-mail on login and call code
+        pyautogui.press("F11")
+        pyautogui.click(x=531, y=350, clicks=2)
+        pyautogui.write(email)
+        pyautogui.press("Enter")
+        time.sleep(3)
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+
+        time.sleep(2)
+
+        # login outlook no office 365
+        '''pyautogui.press("F11")
+        pyautogui.hotkey("CTRL","t")
+        pyperclip.copy("https://outlook.office.com/mail/")
+        pyautogui.hotkey("CTRL","v")
+        pyautogui.press("Enter")
+
+        # Searching VTEX's code access
+        pyautogui.press("F11")
+        '''
+
+        # login outlook api
+        pyautogui.press("win")
+        pyautogui.write("Outlook")
+        pyautogui.press("Enter")
+
+        time.sleep(2)
+
+        # Looking for access code
+        pyautogui.hotkey("CTRL", "SHIFT", "i")
+        pyautogui.press("F3")
+        time.sleep(4)
+        pyperclip.copy("Seu código de acesso é")
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+        pyautogui.press("Enter")
+
+        for x in range(4):
+            pyautogui.press("TAB")
+
+        pyautogui.PAUSE = 0.3
+
+        for x in range(23):
+            pyautogui.press("RIGHT")
+
+        for x in range(6):
+            pyautogui.hotkey("SHIFT", "RIGHT")
+
+        pyautogui.hotkey("CTRL", "c")
+        pyautogui.hotkey("ALT", "F4")
+        pyautogui.hotkey("ALT", "TAB")
+        pyautogui.click(x=527, y=418, clicks=2)
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+    elif log == "S" or log == "s":
+        pyautogui.pause = 5
+
+        # Initiate browser and surf on website
+        pyautogui.press("win")
+        time.sleep(1)
+        pyautogui.write("Chrome")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+
+        pyautogui.click(x=158, y=53)
+        pyautogui.press("delete")
+        pyperclip.copy(site)
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+        pyautogui.press("F11")
+
+    else:
+        print("Verifique a informação digitada!")
+
+    time.sleep(5)
+    pyautogui.pause = 2
+
+    if tempo_extracao == 1:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 2:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 3:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 4:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    else:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(5)
+
+    for x in range(8):
+        pyautogui.press("TAB")
+        time.sleep(0.5)
+
+
+    if agrupar == 1:
+        for x in range(9):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 2:
+        for x in range(8):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 3:
+        for x in range(7):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 4:
+        for x in range(6):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 5:
+        for x in range(5):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 6:
+        for x in range(4):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 7:
+        for x in range(3):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 8:
+        for x in range(2):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 9:
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    elif agrupar == 10:
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    elif agrupar == 11:
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    elif agrupar == 12:
+        pyautogui.press("DOWN")
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    else:
+        print("Agrupamento incorreto!")
+
+    for x in range(4):
+        pyautogui.press("TAB")
+
+    pyautogui.press("Enter")
+
+# Extração xxxxxx
+elif vtex == 3:
+    site = "https://xxxxxxx.myvtex.com/admin/sales-performance/"
+
+    # User mustn't use different words
+    log = str
+    log = str(input("Você está logado no site da VTEX?(S/N)"))
+    while log != "S" and log != "s" and log != "N" and log != "n":
+        print(r"Digite as opções informadas!")
+        log = str(input(r"Você está logado no site da VTEX?(S/N)"))
+    else:
+        pass
+
+    # Conditional about login: Is user are logged on VTEX?
+    if log == "N" or log == "n":
+
+        # Timing between pyautogui codes
+        pyautogui.PAUSE = 2
+
+        # Initiate browser
+        pyautogui.press("win")
+        time.sleep(1)
+        pyautogui.write("Chrome")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+
+        # Searching VTEX's website
+        pyautogui.click(x=158, y=53)
+        pyautogui.press("delete")
+        pyperclip.copy(site)
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+
+        # Input E-mail on login and call code
+        pyautogui.press("F11")
+        pyautogui.click(x=531, y=350, clicks=2)
+        pyautogui.write(email)
+        pyautogui.press("Enter")
+        time.sleep(3)
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+
+        time.sleep(2)
+
+        # login outlook no office 365
+        '''pyautogui.press("F11")
+        pyautogui.hotkey("CTRL","t")
+        pyperclip.copy("https://outlook.office.com/mail/")
+        pyautogui.hotkey("CTRL","v")
+        pyautogui.press("Enter")
+
+        # Searching VTEX's code access
+        pyautogui.press("F11")
+        '''
+
+        # login outlook api
+        pyautogui.press("win")
+        pyautogui.write("Outlook")
+        pyautogui.press("Enter")
+
+        time.sleep(2)
+
+        # Looking for access code
+        pyautogui.hotkey("CTRL", "SHIFT", "i")
+        pyautogui.press("F3")
+        time.sleep(4)
+        pyperclip.copy("Seu código de acesso é")
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+        pyautogui.press("Enter")
+
+        for x in range(4):
+            pyautogui.press("TAB")
+
+        pyautogui.PAUSE = 0.3
+
+        for x in range(23):
+            pyautogui.press("RIGHT")
+
+        for x in range(6):
+            pyautogui.hotkey("SHIFT", "RIGHT")
+
+        pyautogui.hotkey("CTRL", "c")
+        pyautogui.hotkey("ALT", "F4")
+        pyautogui.hotkey("ALT", "TAB")
+        pyautogui.click(x=527, y=418, clicks=2)
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+    elif log == "S" or log == "s":
+        pyautogui.pause = 5
+
+        # Initiate browser and surf on website
+        pyautogui.press("win")
+        time.sleep(1)
+        pyautogui.write("Chrome")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+
+        pyautogui.click(x=158, y=53)
+        pyautogui.press("delete")
+        pyperclip.copy(site)
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+        pyautogui.press("F11")
+
+    else:
+        print("Verifique a informação digitada!")
+
+    time.sleep(5)
+    pyautogui.pause = 2
+
+    if tempo_extracao == 1:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 2:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 3:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 4:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    else:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(5)
+
+    for x in range(8):
+        pyautogui.press("TAB")
+        time.sleep(0.5)
+
+    time.sleep(5)
+
+    if agrupar == 1:
+        for x in range(9):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 2:
+        for x in range(8):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 3:
+        for x in range(7):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 4:
+        for x in range(6):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 5:
+        for x in range(5):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 6:
+        for x in range(4):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 7:
+        for x in range(3):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 8:
+        for x in range(2):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 9:
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    elif agrupar == 10:
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    elif agrupar == 11:
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    elif agrupar == 12:
+        pyautogui.press("DOWN")
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    else:
+        print("Agrupamento incorreto!")
+
+    for x in range(4):
+        pyautogui.press("TAB")
+
+    pyautogui.press("Enter")
+
+# Extração xxxxxxx
+elif vtex == 4:
+    site = "https://xxxxxx.myvtex.com/admin/sales-performance/"
+
+    # User mustn't use different words
+    log = str
+    log = str(input("Você está logado no site da VTEX?(S/N)"))
+    while log != "S" and log != "s" and log != "N" and log != "n":
+        print(r"Digite as opções informadas!")
+        log = str(input(r"Você está logado no site da VTEX?(S/N)"))
+    else:
+        pass
+
+    # Conditional about login: Is user are logged on VTEX?
+    if log == "N" or log == "n":
+
+        # Timing between pyautogui codes
+        pyautogui.PAUSE = 2
+
+        # Initiate browser
+        pyautogui.press("win")
+        time.sleep(1)
+        pyautogui.write("Chrome")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+
+        # Searching VTEX's website
+        pyautogui.click(x=158, y=53)
+        pyautogui.press("delete")
+        pyperclip.copy(site)
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+
+        # Input E-mail on login and call code
+        pyautogui.press("F11")
+        pyautogui.click(x=531, y=350, clicks=2)
+        pyautogui.write(email)
+        pyautogui.press("Enter")
+        time.sleep(3)
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+
+        time.sleep(2)
+
+        # login outlook no office 365
+        '''pyautogui.press("F11")
+        pyautogui.hotkey("CTRL","t")
+        pyperclip.copy("https://outlook.office.com/mail/")
+        pyautogui.hotkey("CTRL","v")
+        pyautogui.press("Enter")
+
+        # Searching VTEX's code access
+        pyautogui.press("F11")
+        '''
+
+        # login outlook api
+        pyautogui.press("win")
+        pyautogui.write("Outlook")
+        pyautogui.press("Enter")
+
+        time.sleep(2)
+
+        # Looking for access code
+        pyautogui.hotkey("CTRL", "SHIFT", "i")
+        pyautogui.press("F3")
+        time.sleep(4)
+        pyperclip.copy("Seu código de acesso é")
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+        pyautogui.press("Enter")
+
+        for x in range(4):
+            pyautogui.press("TAB")
+
+        pyautogui.PAUSE = 0.3
+
+        for x in range(23):
+            pyautogui.press("RIGHT")
+
+        for x in range(6):
+            pyautogui.hotkey("SHIFT", "RIGHT")
+
+        pyautogui.hotkey("CTRL", "c")
+        pyautogui.hotkey("ALT", "F4")
+        pyautogui.hotkey("ALT", "TAB")
+        pyautogui.click(x=527, y=418, clicks=2)
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+    elif log == "S" or log == "s":
+        pyautogui.pause = 5
+
+        # Initiate browser and surf on website
+        pyautogui.press("win")
+        time.sleep(1)
+        pyautogui.write("Chrome")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+
+        pyautogui.click(x=158, y=53)
+        pyautogui.press("delete")
+        pyperclip.copy(site)
+        pyautogui.hotkey("CTRL", "v")
+        pyautogui.press("Enter")
+
+        time.sleep(5)
+        pyautogui.press("F11")
+
+    else:
+        print("Verifique a informação digitada!")
+
+    time.sleep(5)
+    pyautogui.pause = 2
+
+    if tempo_extracao == 1:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 2:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 3:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("UP")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    elif tempo_extracao == 4:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("Enter")
+        time.sleep(5)
+    else:
+        pyautogui.click(x=397, y=70)
+        time.sleep(1)
+        pyautogui.press("TAB")
+        pyautogui.press("TAB")
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(5)
+
+    for x in range(8):
+        pyautogui.press("TAB")
+        time.sleep(0.5)
+
+    if agrupar == 1:
+        for x in range(9):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 2:
+        for x in range(8):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 3:
+        for x in range(7):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 4:
+        for x in range(6):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+            pyautogui.press("Enter")
+    elif agrupar == 5:
+        for x in range(5):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 6:
+        for x in range(4):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 7:
+        for x in range(3):
+            pyautogui.press("UP")
+            time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 8:
+        for x in range(2):
+            pyautogui.press("UP")
+        pyautogui.press("Enter")
+    elif agrupar == 9:
+        pyautogui.press("UP")
+        time.sleep(0.5)
+        pyautogui.press("Enter")
+    elif agrupar == 10:
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    elif agrupar == 11:
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    elif agrupar == 12:
+        pyautogui.press("DOWN")
+        pyautogui.press("DOWN")
+        pyautogui.press("Enter")
+        time.sleep(0.5)
+    else:
+        print("Agrupamento incorreto!")
+
+    for x in range(4):
+        pyautogui.press("TAB")
+
+    pyautogui.press("Enter")
+
+else:
+    print("Verifique o site informado!")
